@@ -98,7 +98,7 @@ def mnist_noniid_unequal(dataset, num_users):
 
         # Next, randomly assign the remaining shards
         for i in range(num_users):
-            if len(idx_shard == 0):
+            if len(idx_shard) == 0:
                 continue
             shard_size = random_shard_size[i]
             if shard_size > len(idx_shard):
@@ -118,15 +118,16 @@ def mnist_noniid_unequal(dataset, num_users):
                 dict_users[i] = np.concatenate(
                     (dict_users[i], idxs[rand*num_imgs:(rand+1)*num_imgs]), axis=0)
 
-        # Add the leftover shards to the client with minimum images:
-        shard_size = len(idx_shard)
-        # Add the remaining shard to the client with lowest data
-        k = min(dict_users, key=lambda x: len(dict_users.get(x)))
-        rand_set = set(np.random.choice(idx_shard, shard_size, replace=False))
-        idx_shard = list(set(idx_shard) - rand_set)
-        for rand in rand_set:
-            dict_users[k] = np.concatenate(
-                (dict_users[k], idxs[rand*num_imgs:(rand+1)*num_imgs]), axis=0)
+        if len(idx_shard) > 0:
+            # Add the leftover shards to the client with minimum images:
+            shard_size = len(idx_shard)
+            # Add the remaining shard to the client with lowest data
+            k = min(dict_users, key=lambda x: len(dict_users.get(x)))
+            rand_set = set(np.random.choice(idx_shard, shard_size, replace=False))
+            idx_shard = list(set(idx_shard) - rand_set)
+            for rand in rand_set:
+                dict_users[k] = np.concatenate(
+                    (dict_users[k], idxs[rand*num_imgs:(rand+1)*num_imgs]), axis=0)
 
     return dict_users
 
