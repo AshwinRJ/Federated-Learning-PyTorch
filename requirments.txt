@@ -1,0 +1,6 @@
+python=3.6.3
+pytorch=0.3.0
+torchvision=0.2.0
+numpy=1.15.4
+tensorboardx=1.4
+matplotlib=3.0.1
