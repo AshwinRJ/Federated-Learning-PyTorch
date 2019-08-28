@@ -14,8 +14,8 @@ import torch
 from tensorboardX import SummaryWrepoch
 
 from options import args_parser
-from Update import LocalUpdate
-from FedNets import MLP, CNNMnist, CNNFashion_Mnist, CNNCifar
+from update import LocalUpdate
+from models import MLP, CNNMnist, CNNFashion_Mnist, CNNCifar
 from averaging import average_weights
 from utils import get_dataset
 
