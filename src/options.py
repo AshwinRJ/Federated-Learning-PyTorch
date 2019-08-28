@@ -41,7 +41,8 @@ def args_parser():
     # other arguments
     parser.add_argument('--dataset', type=str, default='mnist', help="name of dataset")
     parser.add_argument('--num_classes', type=int, default=10, help="number of classes")
-    parser.add_argument('--gpu', type=int, default=1, help="GPU ID")
+    parser.add_argument('--gpu', default=None, help="To use cuda, set \
+                        to a specific GPU ID. Default set to use CPU.")
     parser.add_argument('--iid', type=int, default=0,
                         help='whether i.i.d or not: 1 for iid, 0 for non-iid')
     parser.add_argument('--unequal', type=int, default=0,
