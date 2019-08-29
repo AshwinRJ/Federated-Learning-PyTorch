@@ -51,7 +51,8 @@ if __name__ == '__main__':
         len_in = 1
         for x in img_size:
             len_in *= x
-            global_model = MLP(dim_in=len_in, dim_hidden=64, dim_out=args.num_classes)
+            global_model = MLP(dim_in=len_in, dim_hidden=64,
+                               dim_out=args.num_classes)
     else:
         exit('Error: unrecognized model')
 
@@ -142,8 +143,9 @@ if __name__ == '__main__':
     # plt.plot(range(len(train_loss)), train_loss, color='r')
     # plt.ylabel('Training loss')
     # plt.xlabel('Communication Rounds')
-    # plt.savefig('../save/fed_{}_{}_{}_C[{}]_iid[{}]_E[{}]_B[{}]_loss.png'.format(args.dataset,
-    #                                                                              args.model, args.epochs, args.frac, args.iid, args.local_ep, args.local_bs))
+    # plt.savefig('../save/fed_{}_{}_{}_C[{}]_iid[{}]_E[{}]_B[{}]_loss.png'.
+    #             format(args.dataset, args.model, args.epochs, args.frac,
+    #                    args.iid, args.local_ep, args.local_bs))
     #
     # # Plot Average Accuracy vs Communication rounds
     # plt.figure()
@@ -151,5 +153,6 @@ if __name__ == '__main__':
     # plt.plot(range(len(train_accuracy)), train_accuracy, color='k')
     # plt.ylabel('Average Accuracy')
     # plt.xlabel('Communication Rounds')
-    # plt.savefig('../save/fed_{}_{}_{}_C[{}]_iid[{}]_E[{}]_B[{}]_acc.png'.format(args.dataset,
-    #                                                                             args.model, args.epochs, args.frac, args.iid, args.local_ep, args.local_bs))
+    # plt.savefig('../save/fed_{}_{}_{}_C[{}]_iid[{}]_E[{}]_B[{}]_acc.png'.
+    #             format(args.dataset, args.model, args.epochs, args.frac,
+    #                    args.iid, args.local_ep, args.local_bs))
