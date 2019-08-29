@@ -16,8 +16,7 @@ from tensorboardX import SummaryWriter
 from options import args_parser
 from update import LocalUpdate, test_inference
 from models import MLP, CNNMnist, CNNFashion_Mnist, CNNCifar
-from averaging import average_weights
-from utils import get_dataset
+from utils import get_dataset, average_weights
 
 
 if __name__ == '__main__':
