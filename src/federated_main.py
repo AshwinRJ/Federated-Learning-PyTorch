@@ -16,7 +16,7 @@ from tensorboardX import SummaryWriter
 from options import args_parser
 from update import LocalUpdate, test_inference
 from models import MLP, CNNMnist, CNNFashion_Mnist, CNNCifar
-from utils import get_dataset, average_weights
+from utils import get_dataset, average_weights, exp_details
 
 
 if __name__ == '__main__':
@@ -27,6 +27,7 @@ if __name__ == '__main__':
     logger = SummaryWriter('../logs')
 
     args = args_parser()
+    exp_details(args)
 
     if args.gpu:
         torch.cuda.set_device(args.gpu)
@@ -90,7 +91,7 @@ if __name__ == '__main__':
         # update global weights
         global_weights = average_weights(local_weights)
 
-        # copy weight to global model
+        # update global weights
         global_model.load_state_dict(global_weights)
 
         loss_avg = sum(local_losses) / len(local_losses)
@@ -111,15 +112,13 @@ if __name__ == '__main__':
         if (epoch+1) % print_every == 0:
             print(f' \nAvg Training Stats after {epoch+1} global rounds:')
             print(f'Training Loss : {np.mean(np.array(train_loss))}')
-            print('Train Accuracy: {:.2f}% \n'.format(
-                100.*(np.mean(np.array(train_accuracy)))))
+            print('Train Accuracy: {:.2f}% \n'.format(100*train_accuracy[-1]))
 
     # Test inference after completion of training
     test_acc, test_loss = test_inference(args, global_model, test_dataset)
 
     print(f' \n Results after {args.epochs} global rounds of training:')
-    print("|---- Avg Train Accuracy: {:.2f}%".format(
-        100.*(np.mean(np.array(train_accuracy)))))
+    print("|---- Avg Train Accuracy: {:.2f}%".format(100*train_accuracy[-1]))
     print("|---- Test Accuracy: {:.2f}%".format(100*test_acc))
 
     # Saving the objects train_loss and train_accuracy:
