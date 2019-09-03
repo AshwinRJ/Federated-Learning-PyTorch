@@ -1,6 +1,7 @@
 # Federated-Learning (PyTorch)
 
 Implementation of the vanilla federated learning paper : [Communication-Efficient Learning of Deep Networks from Decentralized Data](https://arxiv.org/abs/1602.05629).
+Blog Post: https://ai.googleblog.com/2017/04/federated-learning-collaborative.html
 
 Experiments are produced on MNIST, Fashion MNIST and CIFAR10 (both IID and non-IID). In case of non-IID, the data amongst the users can be split equally or unequally.
 
