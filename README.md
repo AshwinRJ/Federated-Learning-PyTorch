@@ -7,9 +7,19 @@ Experiments are produced on MNIST, Fashion MNIST and CIFAR10 (both IID and non-I
 
 Since the purpose of these experiments are to illustrate the effectiveness of the federated learning paradigm, only simple models such as MLP and CNN are used.
 
-## Resources
-* CMU MLD: https://blog.ml.cmu.edu/2019/11/12/federated-learning-challenges-methods-and-future-directions/
-* Google AI: https://ai.googleblog.com/2017/04/federated-learning-collaborative.html
+## Further Readings
+### Papers:
+-----
+* [Federated Learning: Challenges, Methods, and Future Directions](https://arxiv.org/abs/1908.07873)
+* [Communication-Efficient Learning of Deep Networks from Decentralized Data](https://arxiv.org/abs/1602.05629)
+* [Deep Learning with Differential Privacy](https://arxiv.org/abs/1607.00133)
+
+### Blog Posts:
+-----
+* [CMU MLD Blog Post: Federated Learning: Challenges, Methods, and Future Directions](https://blog.ml.cmu.edu/2019/11/12/federated-learning-challenges-methods-and-future-directions/)
+* [Leaf: A Benchmark for Federated Settings (CMU)] (https://leaf.cmu.edu/)
+* [TensorFlow Federated](https://www.tensorflow.org/federated)
+* [Google AI Blog Post](https://ai.googleblog.com/2017/04/federated-learning-collaborative.html)
 
 ## Requirments
 Install all the packages from requirments.txt
