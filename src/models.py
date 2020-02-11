@@ -91,7 +91,7 @@ class modelC(nn.Module):
         self.conv1 = nn.Conv2d(input_size, 96, 3, padding=1)
         self.conv2 = nn.Conv2d(96, 96, 3, padding=1)
         self.conv3 = nn.Conv2d(96, 96, 3, padding=1, stride=2)
-        self.conv4 = nn.Conv2d(96, 192, 3, padding=1) is 
+        self.conv4 = nn.Conv2d(96, 192, 3, padding=1)
         self.conv5 = nn.Conv2d(192, 192, 3, padding=1)
         self.conv6 = nn.Conv2d(192, 192, 3, padding=1, stride=2)
         self.conv7 = nn.Conv2d(192, 192, 3, padding=1)
