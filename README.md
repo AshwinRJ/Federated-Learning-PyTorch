@@ -35,11 +35,11 @@ The baseline experiment trains the model in the conventional way.
 
 * To run the baseline experiment with MNIST on MLP using CPU:
 ```
-python baseline_main --model=mlp --dataset=mnist --gpu=None --epochs=10
+python src/baseline_main.py --model=mlp --dataset=mnist --epochs=10
 ```
 * Or to run it on GPU (eg: if gpu:0 is available):
 ```
-python baseline_main --model=mlp --dataset=mnist --gpu=0 --epochs=10
+python src/baseline_main.py --model=mlp --dataset=mnist --gpu=0 --epochs=10
 ```
 -----
 
@@ -47,11 +47,11 @@ Federated experiment involves training a global model using many local models.
 
 * To run the federated experiment with CIFAR on CNN (IID):
 ```
-python federated_main --model=cnn --dataset=cifar --gpu=0 --iid=1 --epochs=10
+python src/federated_main.py --model=cnn --dataset=cifar --gpu=0 --iid=1 --epochs=10
 ```
 * To run the same experiment under non-IID condition:
 ```
-python federated_main --model=cnn --dataset=cifar --gpu=0 --iid=0 --epochs=10
+python src/federated_main.py --model=cnn --dataset=cifar --gpu=0 --iid=0 --epochs=10
 ```
 
 You can change the default values of other parameters to simulate different conditions. Refer to the options section.
