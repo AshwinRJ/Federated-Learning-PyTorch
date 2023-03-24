@@ -3,21 +3,20 @@
 # Python version: 3.6
 
 
-import os
 import copy
-import time
+import os
 import pickle
-import numpy as np
-from tqdm import tqdm
+import time
 
+import numpy as np
 import torch
 from tensorboardX import SummaryWriter
+from tqdm import tqdm
 
+from models import MLP, CNNCifar, CNNFashion_Mnist, CNNMnist
 from options import args_parser
 from update import LocalUpdate, test_inference
-from models import MLP, CNNMnist, CNNFashion_Mnist, CNNCifar
-from utils import get_dataset, average_weights, exp_details
-
+from utils import average_weights, exp_details, get_dataset
 
 if __name__ == '__main__':
     start_time = time.time()
@@ -29,7 +28,7 @@ if __name__ == '__main__':
     args = args_parser()
     exp_details(args)
 
-    if args.gpu_id:
+    if hasattr(args,"gpu_id"):
         torch.cuda.set_device(args.gpu_id)
     device = 'cuda' if args.gpu else 'cpu'
 
