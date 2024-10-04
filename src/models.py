@@ -21,7 +21,7 @@ class MLP(nn.Module):
         x = self.dropout(x)
         x = self.relu(x)
         x = self.layer_hidden(x)
-        return self.softmax(x)
+        return x
 
 
 class CNNMnist(nn.Module):
