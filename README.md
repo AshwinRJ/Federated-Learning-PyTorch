@@ -11,7 +11,7 @@ Since the purpose of these experiments are to illustrate the effectiveness of th
 Install all the packages from requirments.txt
 * Python3
 * Pytorch
-* Torchvision
+* CNN
 
 ## Data
 * Download train and test datasets manually or they will be automatically downloaded from torchvision datasets.
