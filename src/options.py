@@ -60,5 +60,7 @@ def args_parser():
                         help='rounds of early stopping')
     parser.add_argument('--verbose', type=int, default=1, help='verbose')
     parser.add_argument('--seed', type=int, default=1, help='random seed')
+    parser.add_argument('--quantize', action='store_true', help='enable block-wise INT4 quantization for client communication')
+    parser.add_argument('--block_size', type=int, default=64, help='block size for tensor quantization')
     args = parser.parse_args()
     return args
