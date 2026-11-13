@@ -17,6 +17,7 @@ from options import args_parser
 from update import LocalUpdate, test_inference
 from models import MLP, CNNMnist, CNNFashion_Mnist, CNNCifar
 from utils import get_dataset, average_weights, exp_details
+from quantization import compress_state_dict, decompress_state_dict
 
 
 if __name__ == '__main__':
@@ -67,6 +68,7 @@ if __name__ == '__main__':
 
     # Training
     train_loss, train_accuracy = [], []
+    residuals_by_user = {}
     val_acc_list, net_list = [], []
     cv_loss, cv_acc = [], []
     print_every = 2
@@ -85,7 +87,14 @@ if __name__ == '__main__':
                                       idxs=user_groups[idx], logger=logger)
             w, loss = local_model.update_weights(
                 model=copy.deepcopy(global_model), global_round=epoch)
-            local_weights.append(copy.deepcopy(w))
+            if args.quantize:
+                res = residuals_by_user.get(idx)
+                comp_w, new_res = compress_state_dict(w, block_size=args.block_size, residuals=res)
+                residuals_by_user[idx] = new_res
+                w_transmitted = decompress_state_dict(comp_w)
+            else:
+                w_transmitted = copy.deepcopy(w)
+            local_weights.append(copy.deepcopy(w_transmitted))
             local_losses.append(copy.deepcopy(loss))
 
         # update global weights
